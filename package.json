@@ -1,0 +1,39 @@
+{
+  "name": "outage-notifier",
+  "version": "1.0.0",
+  "description": "An Outage Notification Management Platform",
+  "main": "app.js",
+  "scripts": {
+    "start": "SET DEBUG=app,app:* && SET NODE_ENV=local && nodemon src/app.js",
+    "test": "DEBUG=app,app:* NODE_ENV=local nodemon src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://dev.jeymz.xyz/flex-soft/outage-notifier.git"
+  },
+  "author": "James L.M. Simmons",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "chalk": "^3.0.0",
+    "config": "^3.2.5",
+    "cookie-parser": "^1.4.5",
+    "debug": "^4.1.1",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "nodemailer": "^6.4.10",
+    "passport": "^0.4.1",
+    "passport-google-oauth": "^2.0.0",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-local": "^1.0.0",
+    "promise-mysql": "^3.3.2",
+    "rand-token": "^1.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.0"
+  }
+}

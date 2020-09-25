@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Robotti Rapid Response - Login</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/auth.css">
+  </head>
+  <body class="bg-dark">
+    <% if (view === 'login') { %>
+      <!-- Login View -->
+      <div class="wrapper fadeInDown">
+        <div id="formContent">
+          <!-- Tabs Titles -->
+          <% if (message) { %>
+            <div class="alert alert-danger" role="alert">
+              <%= message %>
+              <% if (status) { %>
+                <br>
+                <a href="/auth/verification?send=true<% if (email) { %>&email=<%= email %><% } %>">Activate Now!</a>
+              <% } %>
+            </div>
+          <% } %>
+
+          <!-- Icon -->
+          <div class="fadeIn first">
+            <a href="/"><img src="/images/RobottiRapidResponse.png" alt="Robotti Rapid Response"></a>
+          </div>
+
+          <!-- Login Form -->
+          <form action="/auth/login" method="POST">
+            <input type="email" id="email" class="fadeIn second" name="email" placeholder="E-Mail" value="<% if (email) { %><%= email %><% } %>" required>
+            <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password">
+            <input type="submit" class="fadeIn fourth" value="Log In">
+          </form>
+
+          <!-- Remind Passowrd -->
+          <div id="formFooter">
+            <a class="underlineHover" href="/auth/resetPassword<% if (email) { %>?email=<%= email %><% } %>">Forgot Password?</a>
+          </div>
+
+        </div>
+    <% } %>
+
+    <% if (view === 'signup') { %>
+      <div class="wrapper fadeInDown">
+        <div id="formContent">
+          <!-- Tabs Titles -->
+          <% if (message) { %>
+            <div class="alert alert-danger" role="alert">
+              <%= message %>
+            </div>
+          <% } %>
+
+          <!-- Icon -->
+          <div class="fadeIn first">
+            <a href="/"><img src="/images/RobottiRapidResponse.png" alt="Robotti Rapid Response"></a>
+          </div>
+
+          <!-- Login Form -->
+          <form action="/auth/signup" method="post">
+            <input type="email" id="email" class="fadeIn second" name="email" placeholder="E-Mail" value="<% if (email) { %><%= email %><% } %>" required>
+            <input type="text" id="firstName" class="fadeIn third" name="firstName" placeholder="First Name" value="<% if (firstName) { %><%= firstName %><% } %>" required>
+            <input type="text" id="lastName" class="fadeIn fourth" name="lastName" placeholder="Last Name" value="<% if (lastName) { %><%= lastName %><% } %>" required>
+            <input type="password" id="password" class="fadeIn fifth" name="password" placeholder="Password" required>
+            <input type="password" id="confirmPassword" class="fadeIn sixth" name="confirmPassword" placeholder="Confirm Password" required>
+            <input type="submit" class="fadeIn seventh" value="Sign Up!">
+          </form>
+          <!-- Remind Passowrd -->
+          <!-- <div id="formFooter">
+            <a class="underlineHover" href="/auth/login">Login</a>
+          </div> -->
+        </div>
+    <% } %>
+
+    <% if (view === 'verification') { %>
+      <div class="wrapper fadeInDown">
+        <div id="formContent">
+          <!-- Tabs Titles -->
+          <% if (message) { %>
+            <div class="alert alert-danger" role="alert">
+              <%= message %>
+            </div>
+          <% } %>
+
+          <!-- Icon -->
+          <div class="fadeIn first">
+            <a href="/"><img src="/images/RobottiRapidResponse.png" alt="Robotti Rapid Response"></a>
+          </div>
+
+          <% if (sent) { %>
+            <div class="fadeIn second text-center">
+              <img src="/images/emailSent.gif" style="width: 100%;" alt="">
+            </div>
+            <div class="fadeIn third text-center">
+              <h2>Thank you<% if (firstName) { %> <%= firstName %><% } %>! An activation email has been sent to <% if (email) { %><%= email %><% } else { %>your email<% } %>.</h2>
+            </div>
+          <% } else if (send) { %>
+            <form action="/auth/verification" method="post">
+              <input type="email" id="email" class="fadeIn second" name="email" placeholder="E-Mail" value="<% if (email) { %><%= email %><% } %>" required>
+              <input type="submit" class="fadeIn third" value="Re-send Activation Email">
+            </form>
+          <% } else if (complete) { %>
+            <div class="fadeIn second text-center">
+              <img src="/images/reset.png" style="width: 100%;" alt="">
+            </div>
+            <div class="fadeIn third text-center">
+              <h2>Your account has been activated</h2>
+            </div>
+          <% } %>
+        </div>
+    <% } %>
+
+    <% if (view === 'resetPassword') { %>
+      <div class="wrapper fadeInDown">
+        <div id="formContent">
+          <!-- Tabs Titles -->
+          <% if (message) { %>
+            <div class="alert alert-danger" role="alert">
+              <%= message %>
+            </div>
+          <% } %>
+
+          <!-- Icon -->
+          <div class="fadeIn first">
+            <a href="/"><img src="/images/RobottiRapidResponse.png" alt="Robotti Rapid Response"></a>
+          </div>
+
+          <!-- Login Form -->
+          <% if (request) { %>
+            <div class="fadeIn second text-center">
+              <img src="/images/emailSent.gif" style="width: 100%;" alt="">
+            </div>
+            <div class="fadeIn third text-center">
+              <h2>A one time reset link has been sent to <% if (email) { %><%= email %><% } else { %>your email<% } %></h2>
+            </div>
+          <% } else if (reset) { %>
+            <div class="fadeIn second text-center">
+              <img src="/images/reset.png" style="width: 100%;" alt="">
+            </div>
+            <div class="fadeIn third text-center">
+              <h2>Your password has been reset!</h2>
+            </div>
+          <% } else { %>
+            <form action="/auth/resetPassword" method="post">
+              <% if (email) { %>
+                <input type="email" id="email" class="fadeIn second" name="email" placeholder="E-Mail" value="<%= email %>" required <% if(verification) { %>hidden="true"<% } %>>
+              <% } else { %>
+                <input type="email" id="email" class="fadeIn second" name="email" placeholder="E-Mail" value="" required>
+              <% } %>
+              <% if (verification) { %>
+                <input type="text" id="verification" class="fadeIn second" name="verification" placeholder="First verification" value="<%= verification %>" required hidden="true">
+              <% } %>
+              <% if (email && verification) { %>
+                <input type="password" id="password" class="fadeIn second" name="password" placeholder="Password" required>
+                <input type="password" id="confirmPassword" class="fadeIn third" name="confirmPassword" placeholder="Confirm Password" required>
+              <% } %>
+              <% if (!verification) { %>
+                <input type="submit" class="fadeIn third" value="Reset Password">
+              <% } else { %>
+                <input type="submit" class="fadeIn fourth" value="Change Password">
+              <% } %>
+
+            </form>
+          <% } %>
+
+
+          <!-- Remind Passowrd -->
+          <!-- <div id="formFooter">
+            <a class="underlineHover" href="/auth/login">Login</a>
+          </div> -->
+
+        </div>
+    <% } %>
+
+</div>
+  </body>
+</html>

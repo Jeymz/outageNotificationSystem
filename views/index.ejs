@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/index.css">
+    <title>Robotti Rapid Repsonse</title>
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/23b9d06388.js" crossorigin="anonymous"></script>
+  </head>
+  <body class="bg-dark">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="/"> <img src="/images/RobottiRapidResponseNav.png" alt=""> </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item <% if (view === 'home') { %>active<% } %>">
+            <a class="nav-link" href="/">Home <% if (view === 'home') { %><span class="sr-only">(current)</span><% } %></a>
+          </li>
+          <li class="nav-item <% if (view === 'features') { %>active<% } %>">
+            <a class="nav-link" href="/features">Features <% if (view === 'features') { %><span class="sr-only">(current)</span><% } %></a>
+          </li>
+          <li class="nav-item <% if (view === 'pricing') { %>active<% } %>">
+            <a class="nav-link" href="/pricing">Pricing <% if (view === 'pricing') { %><span class="sr-only">(current)</span><% } %></a>
+          </li>
+        </ul>
+        <form class="form-inline" action="/auth" method="post">
+          <input class="form-control mr-sm-2" type="email" placeholder="E-mail" aria-label="E-mail" name="email" id="email">
+          <!-- <input class="form-control mr-sm-2" type="password" placeholder="Password" aria-label="Password" name="password" id="password"> -->
+          <button class="btn btn-primary my-2 my-sm-0" type="submit">Login / Signup</button>
+        </form>
+      </div>
+    </nav>
+
+    <% if (view === 'home') { %>
+      <!-- Home View -->
+      <div class="container">
+        <div class="row homeRow">
+          <div class="col-lg-4 text-center">
+            <h1>Identify</h1>
+            <i class="fas fa-server homeIcon"></i>
+          </div>
+          <div class="col-lg-4 text-center">
+            <h1>Notify</h1>
+            <i class="fas fa-mail-bulk homeIcon"></i>
+          </div>
+          <div class="col-lg-4 text-center">
+            <h1>Respond</h1>
+            <i class="fas fa-users homeIcon"></i>
+          </div>
+        </div>
+        <div class="row homeRow">
+          <div class="col-lg-6 text-center">
+            Rapid communication of outages and updates to your orginization.
+          </div>
+          <div class="col-lg-6 text-center">
+            Click here for a live demo
+          </div>
+        </div>
+      </div>
+    <% } %>
+
+    <% if (view === 'features') { %>
+      <!-- Features View -->
+      <div class="container">
+        <div class="row homeRow">
+          <div id="featureCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="..." alt="Add your own IT systems for quick alerting">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row homeRow">
+
+        </div>
+      </div>
+    <% } %>
+    <% if (view === 'pricing') { %>
+      <div class="container">
+        <div class="row homeRow">
+          <div class="col-lg-2">
+
+          </div>
+          <div class="col-lg-8">
+            <table class="table table-striped table-dark">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col" class="text-center">Free</th>
+                  <th scope="col" class="text-center">Standard</th>
+                  <th scope="col" class="text-center">Enterprise</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% for (let i = 0; i < pricing.length; i += 1) { %>
+                  <tr>
+                    <th class="text-right" scope="row"><%= pricing[i].feature %></th>
+                    <td class="text-center">
+                      <% if (pricing[i].tiers.indexOf(1) > -1) { %>
+                        <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                      <% } else if(pricing[i].starredTiers.indexOf(1) > -1) { %>
+                        <i class="fa fa-asterisk" aria-hidden="true"></i>
+                      <% } else { %>
+                        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                      <% } %>
+                    </td>
+                    <td class="text-center">
+                      <% if (pricing[i].tiers.indexOf(2) > -1) { %>
+                        <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                      <% } else if(pricing[i].starredTiers.indexOf(2) > -1) { %>
+                        <i class="fa fa-asterisk" aria-hidden="true"></i>
+                      <% } else { %>
+                        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                      <% } %>
+                    </td>
+                    <td class="text-center">
+                      <% if (pricing[i].tiers.indexOf(3) > -1) { %>
+                        <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                      <% } else if(pricing[i].starredTiers.indexOf(3) > -1) { %>
+                        <i class="fa fa-asterisk" aria-hidden="true"></i>
+                      <% } else { %>
+                        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                      <% } %>
+                    </td>
+
+                  </tr>
+                <% } %>
+                <tr>
+                  <th scop="row"></th>
+                  <td>Free</td>
+                  <td>$4.99 / month</td>
+                  <td>$9.99 / month</td>
+                </tr>
+              </tbody>
+            </table>
+            <i class="fa fa-asterisk" aria-hidden="true"> Restricted to subscription level features.</i>
+          </div>
+          <div class="col-lg-2">
+
+          </div>
+        </div>
+      </div>
+    <% } %>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!-- Custom JS -->
+    <script type="text/javascript" src="/js/outage.js"></script>
+
+    </script>
+  </body>
+</html>

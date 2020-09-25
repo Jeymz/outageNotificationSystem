@@ -1,0 +1,24 @@
+#update {
+  float: right;
+}
+
+.homeIcon {
+  font-size: 150px;
+  color: #72ed6b;
+}
+
+.homeRow {
+  padding-top: 30px;
+}
+
+.fa-check-circle-o {
+  color: #53d90b;
+}
+
+.fa-asterisk {
+  color: #00a1e6;
+}
+
+.fa-times-circle-o {
+  color: #d91c0b
+}

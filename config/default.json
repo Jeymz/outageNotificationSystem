@@ -1,0 +1,108 @@
+{
+  "serverConfig": {
+    "environment": "local-dev",
+    "port": 3000,
+    "hostname": "localhost:3000",
+    "protocol": "http"
+  },
+  "mailConfig": {
+    "host": "smtp.office365.com",
+    "port": 587,
+    "secure": false,
+    "requireTLS": true,
+    "auth": {
+      "user": "",
+      "pass": ""
+    },
+    "tls": {
+      "ciphers": "SSLv3"
+    }
+  },
+  "dbConfig": {
+    "host": "",
+    "user": "",
+    "password": "",
+    "database": "robottiRapidResponse"
+  },
+  "authInfo": {
+    "sessionInfo": {
+      "secret": "",
+      "name": "RobottiQuicktAlert",
+      "resave": true,
+      "saveUninitialized": true
+    },
+    "passwordComplexitySettings": {
+      "minimumLength": 8,
+      "upperCaseRequired": true,
+      "lowerCaseRequired": true,
+      "numberRequired": true,
+      "specialRequired": true
+    },
+    "google": {
+      "clientID": "",
+      "clientSecret": "",
+      "callbackURL": "http://localhost:3000/auth/google/callback",
+      "accessType": "offline",
+      "userProfileURL": "https://www.googleapis.com/oauth2/v3/userinfo"
+    }
+  },
+  "quickbooks": {
+    "clientID": "" ,
+    "clientSecret": ""
+  },
+  "pricing": [
+    {
+      "feature": "Add your own IT systems for quick alerting",
+      "tiers": [ 1, 2, 3 ],
+      "starredTiers": []
+    },
+    {
+      "feature": "Customize Response Notifications",
+      "tiers": [ 2, 3 ],
+      "starredTiers": []
+    },
+    {
+      "feature": "Additional Notification Items",
+      "tiers": [ 2, 3 ],
+      "starredTiers": []
+    },
+    {
+      "feature": "Send Noitifications From Your Own Address",
+      "tiers": [ 2, 3 ],
+      "starredTiers": []
+    },
+    {
+      "feature": "Outage & Response Reporting",
+      "tiers": [ 1, 2, 3 ],
+      "starredTiers": []
+    },
+    {
+      "feature": "SLA Integration",
+      "tiers": [ 3 ],
+      "starredTiers": []
+    },
+    {
+      "feature": "API Integration",
+      "tiers": [ 3 ],
+      "starredTiers": [ 1, 2 ]
+    },
+    {
+      "feature": "IT Outage Dashboard",
+      "tiers": [ 1, 2, 3 ],
+      "starredTiers": []
+    },
+    {
+      "feature": "Custom Flow Creation",
+      "tiers": [ 3 ],
+      "starredTiers": []
+    },
+    {
+      "feature": "Multiple User Accounts",
+      "tiers": [ 3 ],
+      "starredTiers": []
+    }
+  ],
+  "tierPricing": {
+
+  }
+}
